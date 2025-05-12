@@ -1,10 +1,13 @@
-import mysql from 'mysql2/promise'
+import dotenv from 'dotenv';
+import pkg from 'pg';
 
-const config = {
-    host: 'localhost',
-    user: 'root',
-    port: 3306,
-    password: '1234',
-    database: 'trujilloyasociados'
-}
-export const connection = await mysql.createConnection(config)
+dotenv.config();
+
+const { Pool } = pkg;
+export const connection = new Pool({
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  database: process.env.DB_NAME,
+});

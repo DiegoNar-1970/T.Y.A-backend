@@ -1,48 +1,53 @@
- import { connection } from '../config/configDb.js'
+import { connection } from '../config/configDb.js';
 
- export class CustomerModel {
+export class CustomerModel {
     static async getAll() {
-        const [rows] = await connection.query(`SELECT BIN_TO_UUID(id) id, name, phone, email, document, type_document  FROM customer`)
-        
-        return rows
+        const result = await connection.query(`
+            SELECT id, name, phone, email, document, type_of_doc 
+            FROM customer
+        `);
+        return result.rows;
     }
+
     static async getByCc(cc) {
-        const [rows] = await connection.query('SELECT * FROM customer WHERE cc = ?', [cc])
-        
-        return rows[0]
+        const result = await connection.query(`
+            SELECT * FROM customer WHERE document = $1
+        `, [cc]);
+        return result.rows[0];
     }
+
     static async getByName(name) {
-        const [rows] = await connection.query('SELECT * FROM customer WHERE name = ?', [name])
-        
-        return rows[0]
+        const result = await connection.query(`
+            SELECT * FROM customer WHERE name = $1
+        `, [name]);
+        return result.rows[0];
     }
 
     static async create(customer) {
-        
-        const { name, document, email, phone, radicado, type_document } = customer
+        const { name, document, email, phone, type_of_doc } = customer;
 
-        const [uuidResult] = await connection.query('SELECT UUID() uuid;')
-        const [{uuid}] = uuidResult
-        
-        const result = await connection.query(
-            `INSERT INTO customer (id, name, document, email, phone, radicado, type_document) VALUES (UUID_TO_BIN("${uuid}"), ?, ?, ?, ?, ?, ?);`,
-            [name, document, email, phone, radicado, type_document]
-        )  
-        const data = await connection.query(
-            `SELECT BIN_TO_UUID(id) id, name, phone, email, document, type_document  FROM customer where id = UUID_TO_BIN("${uuid}");`
-        )
-        return data[0]
+        const result = await connection.query(`
+            INSERT INTO customer (name, document, email, phone, type_of_doc)
+            VALUES ($1, $2, $3, $4, $5)
+            RETURNING id, name, phone, email, document, type_of_doc
+        `, [name, document, email, phone, type_of_doc]);
+
+        return result.rows[0];
     }
-    static async updatePartialCustomer(data){
 
-        const setClause = Object.keys(data)
-        .map(key => `${key} = ?`)
-         .join(', ');
-        const values = Object.values(data);
-        const query = `UPDATE customer SET ${setClause} WHERE id = ?`
+    static async updatePartialCustomer(data) {
+        const keys = Object.keys(data).filter(k => k !== 'id');
+        const values = keys.map(k => data[k]);
 
-        const [result] = await connection.query(query, [...values, data.id])
-        
-        return result.affectedRows
+        const setClause = keys.map((key, index) => `${key} = $${index + 1}`).join(', ');
+
+        const query = `
+            UPDATE customer
+            SET ${setClause}
+            WHERE id = $${keys.length + 1}
+        `;
+
+        const result = await connection.query(query, [...values, data.id]);
+        return result.rowCount;
     }
- } 
+}
