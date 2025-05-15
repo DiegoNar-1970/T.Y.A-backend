@@ -1,5 +1,5 @@
 import express from 'express';
-import { EmailLinkController } from '../controllers/EmailLinkController.js';
+import { EmailLinkController } from '../Controllers/emailLinkController';
 
 export const EmailLinkRoute = express.Router();
 
