@@ -1,7 +1,7 @@
     import { Request, Response } from "express";
 import { AccusedModel } from "../models/accusedModel";
 import { ContractModel } from "../models/contractModel";
-import { ControlFileModel } from "../models/ControlFileModel";
+import { ControlFileModel } from "../models/controlFileModel";
 import { CustomerModel } from "../models/customerModel";
 import { EmailLinkModel } from "../models/emailLlinkModel";
 import { EmployeeModel } from "../models/employeeModel";

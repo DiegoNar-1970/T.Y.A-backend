@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.controlFileRouter = void 0;
+const express_1 = require("express");
+const controlFileController_1 = require("../controllers/controlFileController");
+const uploadMemory_1 = require("../middleware/uploadMemory");
+exports.controlFileRouter = (0, express_1.Router)();
+exports.controlFileRouter.post('/upload', uploadMemory_1.upload.single('file'), controlFileController_1.ControlFileController.uploadFile);
+exports.controlFileRouter.post('/upload-without-email', uploadMemory_1.upload.single('file'), controlFileController_1.ControlFileController.upLoadFileWithoutEmail);
+exports.controlFileRouter.post('/send-sings/:id', controlFileController_1.ControlFileController.signContract);

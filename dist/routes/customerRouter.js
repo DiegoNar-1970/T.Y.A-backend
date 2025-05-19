@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.customerRouter = void 0;
+const express_1 = require("express");
+const customerController_1 = require("../controllers/customerController");
+exports.customerRouter = (0, express_1.Router)();
+exports.customerRouter.get("/", customerController_1.CustomerController.getAll);
+exports.customerRouter.get("/by-cc/:cc", customerController_1.CustomerController.getByCc);
+exports.customerRouter.get("/by-name/:name", customerController_1.CustomerController.getByName);
+exports.customerRouter.post("/", customerController_1.CustomerController.create);
+// customerRouter.patch("/:id", CustomerController.updatePartialCustomer);

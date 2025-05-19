@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 import { createAccesToken } from '../config/jwt';
-import { UserModel } from '../models/UserModel';
+import { UserModel } from '../models/userModel';
 import { AppError } from '../utils/AppError';
 export class UserController {
 

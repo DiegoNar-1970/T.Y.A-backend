@@ -3,14 +3,14 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import express from 'express';
 
-import { accusedRouter } from './Routes/AcussedRouter';
-import { contractRouter } from './Routes/contractRouter';
-import { controlFileRouter } from './Routes/controlFileRouter';
-import { customerRouter } from './Routes/customerRouter';
-import { EmailLinkRoute } from './Routes/emailLinkRoute';
-import { employeeRouter } from './Routes/employeeRouter';
-import { InfoContractRouter } from './Routes/infoContractRouter';
-import { UserRouter } from './Routes/UserRouter';
+import { accusedRouter } from './routes/acussedRouter';
+import { contractRouter } from './routes/contractRouter';
+import { controlFileRouter } from './routes/controlFileRouter';
+import { customerRouter } from './routes/customerRouter';
+import { EmailLinkRoute } from './routes/emailLinkRoute';
+import { employeeRouter } from './routes/employeeRouter';
+import { InfoContractRouter } from './routes/infoContractRouter';
+import { UserRouter } from './routes/UserRouter';
 
 const corsOptions = {
     origin: 'http://localhost:5173', 

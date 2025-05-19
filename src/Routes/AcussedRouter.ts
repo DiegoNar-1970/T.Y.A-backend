@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { AccusedController } from '../Controllers/accusedController';
+import { AccusedController } from '../controllers/accusedController';
 export const accusedRouter = Router();
 
 accusedRouter.get('/', AccusedController.getAllAccused);

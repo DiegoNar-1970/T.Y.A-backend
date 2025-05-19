@@ -13,7 +13,7 @@ export class AccusedService {
       throw error; // Re-lanzamos el error
     }
     }
-    static async getAccusedByCc(cc: string): Promise<Accused[] | null> {
+    static async getAccusedByCc(cc: string): Promise<Accused | null> {
         try {
             return await AccusedModel.getByCc(cc); 
         } catch (error) {

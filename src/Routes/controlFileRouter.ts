@@ -1,8 +1,8 @@
 import { Router } from "express";
 
-import { ControlFileController } from "../Controllers/controlFileController";
+import { ControlFileController } from "../controllers/controlFileController";
 
-import { upload } from '../Middleware/uploadMemory';
+import { upload } from '../middleware/uploadMemory';
 
 export const controlFileRouter = Router();
 

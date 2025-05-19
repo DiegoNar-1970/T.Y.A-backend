@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import { InfoContractController } from '../Controllers/infoContractController';
+import { InfoContractController } from '../controllers/infoContractController';
 
 export const InfoContractRouter = Router();
 
