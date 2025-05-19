@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "tsx watch src/app.ts",
-    "start": "node ./src/app.js"
+    "start": "npm run build && node dist/app.js"
+
   },
   "keywords": [],
   "author": "",
