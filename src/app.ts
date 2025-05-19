@@ -2,7 +2,6 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import express from 'express';
-import { PORT } from './config/config';
 import { accusedRouter } from './Routes/AcussedRouter.js';
 import { contractRouter } from './Routes/contractRouter.js';
 import { controlFileRouter } from './Routes/controlFileRouter.js';
@@ -40,7 +39,7 @@ app.use('/user',UserRouter);
 
 
 
-// const PORT = process.env.PORT ?? 1234
+const PORT = process.env.PORT ?? 1234
 
 app.listen(PORT, () => {
     console.log(`Server is listening on port http://localhost:${PORT}`)
