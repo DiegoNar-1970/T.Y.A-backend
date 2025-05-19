@@ -5,8 +5,6 @@ import { createUrl, paramsS3, s3Client } from '../config/s3Config';
 export class ControlFileModel { 
 
     static async uploadPdf(file: Express.Multer.File, archiveName:string,folder?:string) {
-        console.log('esto contiene el file',file)
-        
         const params = {
             ...paramsS3,
             Key: `${folder}/${archiveName}`,

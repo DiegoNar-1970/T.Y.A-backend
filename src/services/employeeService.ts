@@ -33,7 +33,6 @@ export class EmployeeService {
     try{
         return await EmployeeModel.updateEmployee(id, name, document, phone);
     }catch(error){
-        console.error('Service Error in updateEmployee:', error);
         throw error;
     }
   }

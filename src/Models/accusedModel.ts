@@ -38,7 +38,6 @@ export class AccusedModel {
     }
 
     static  async findByCcAndCreate(a:AccusedDTO){
-        console.log(a,'esto llgo ')
         try {
             const { rows } = await connection.query(`
                 SELECT * FROM accused WHERE document = $1`, [a.document]);

@@ -46,7 +46,6 @@ export class CustomerService {
       return await CustomerModel.countCustomer();
     }catch(error:unknown){
       if (error instanceof Error) {
-        console.log('entro a customer',error.message)
         throw new AppError(error.message,'UKNOWN_ERROR',500);
     }
         throw new Error('Unknown error occurred in updatePartialCustomer');

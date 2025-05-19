@@ -33,7 +33,6 @@ export class ContractService {
   static async countContAsigned(): Promise<Contract> {
     try{
       const response=await ContractModel.countContAsigned()
-      console.log(response);
       return response
     }catch (error: unknown) {
         if (error instanceof Error) {
@@ -47,7 +46,6 @@ export class ContractService {
   static async getNewsContracts(): Promise<Contract> {
     try{
       const response=await ContractModel.getNewsContracts()
-      console.log(response);
       return response
     }catch (error: unknown) {
         if (error instanceof Error) {
@@ -58,10 +56,10 @@ export class ContractService {
         }
       }
   }
-  static async getRecentContracts(): Promise<Contract> {
+  static async getRecentContracts() {
     try{
       const response=await ContractModel.getRecentContracts()
-      console.log(response);
+
       return response
     }catch (error: unknown) {
         if (error instanceof Error) {

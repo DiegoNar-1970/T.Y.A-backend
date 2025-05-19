@@ -28,12 +28,11 @@ export class InfoContractModel {
       }
       return rows[0] || null;
     } catch (error: unknown) {
-      if (error instanceof Error) {
-        console.error(`Error al obtener el contrato con id ${id}:`, error.message);
+      if (error instanceof AppError) {
         throw new AppError(
           error.message,
-        'UNKNOWN_ERROR',
-        500)
+          error.code,
+          error.statusCode)
       } else {
         console.error(`Error desconocido al obtener el contrato con id ${id}`);
       }
@@ -72,13 +71,12 @@ static async createInfoContract(infoContract: InfoContract):Promise<InfoContract
       [id_customer, id_accused, id_type_pay, id_type_contract, num_radicado, total_payment, porcentage_honorario]
     );
 
-    console.log(rows)
     return rows[0];
   } catch (error: any) {
     if (error instanceof AppError) {
         throw new AppError(error.message,error.code,error.statusCode); // deja que el controlador lo maneje
     } else {
-      throw new Error('Error desconocido al crear info_contract');
+      throw new Error(error.message);
     }
   }
 }

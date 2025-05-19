@@ -7,7 +7,7 @@ export const employeeRouter = Router();
 // Rutas CRUD para empleados
 employeeRouter.get('/', EmployeeController.getAllEmployees);
 employeeRouter.get('/:id', EmployeeController.getEmployeeById);
-employeeRouter.post('/', EmployeeController.createEmployee);
-employeeRouter.put('/:id', EmployeeController.updateEmployee);
+employeeRouter.post('/create', EmployeeController.createEmployee);
 employeeRouter.delete('/:id', EmployeeController.deleteEmployee);
+employeeRouter.put('/update/:id', EmployeeController.updateEmployee);
 

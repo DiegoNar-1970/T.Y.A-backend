@@ -58,8 +58,8 @@ import { AppError } from "../utils/AppError";
 
                 const idCustomer = await CustomerModel.findByCcAndCreate(customerParsed)
                 if(accusedParsed.name!=null){
+                    
                     idAccused = await AccusedModel.findByCcAndCreate(accusedParsed)           
-                    console.log(idCustomer)
                 }
                 
                 const employee = await EmployeeModel.getByDocument(dataParsed.executive)
@@ -71,6 +71,7 @@ import { AppError } from "../utils/AppError";
                     
                 }
                 const resContract  = await InfoContractModel.createInfoContract(infoContractFinal)
+                console.log(resContract)
                 
                 if(!resContract){
                     res.status(500).json({ message: 'No se pudo crear el contrato (resContract es null)' })
@@ -130,8 +131,6 @@ import { AppError } from "../utils/AppError";
                         message:error.message||'Error En el servidor'
                     }
                 });
-
-                console.log('Error en el controlFileController', error);
             }
 
         }
@@ -231,7 +230,6 @@ import { AppError } from "../utils/AppError";
                     });
                     return
                 }
-                console.log('Error en el controlFileController', error);
             }
 
         }
@@ -240,7 +238,6 @@ import { AppError } from "../utils/AppError";
             try {
             const { id } = req.params;
             const { signature } = req.body; 
-            console.log('esta es la firma',id)
 
             if (!signature) {
                 throw new AppError(
@@ -286,8 +283,6 @@ import { AppError } from "../utils/AppError";
                     console.error('AppError:', error.message);
                     return res.status(error.statusCode).json({ message: error.message, code: error.code });
                   }
-
-                  console.error('Error firmando contrato:', error);
                   return res.status(500).json({ message: 'Error interno al firmar contrato' });
             }
         }

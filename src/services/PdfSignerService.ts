@@ -25,19 +25,37 @@ export class PdfSignerService {
     // 2. Cargar el PDF y la imagen de la firma
     const pdfDoc = await PDFDocument.load(pdfBuffer);
     const signatureImage = await pdfDoc.embedPng(signatureBase64);
-    const pngDims = signatureImage.scale(0.5);
-    const page = pdfDoc.getPages()[0]; // Asumimos que la firma va en la primera página
+    const pngDims = signatureImage.scale(0.3); // Reducción del 30% para mejor ajuste
 
-    // 3. Insertar firma en dos coordenadas (ajústalas según tu PDF)
-      page.drawImage(signatureImage, { x: 130, y: 250, width: pngDims.width, height: pngDims.height }); // Firma 1
-      page.drawImage(signatureImage, { x: 130, y: 100, width: pngDims.width, height: pngDims.height }); // Firma 2
+    // 3. Insertar firmas en las páginas correspondientes
+    const pages = pdfDoc.getPages();
+    
+    // Firma en página 3 (contrato)
+    if (pages.length > 2) { // Página 3 es índice 2 (0-based)
+      pages[2].drawImage(signatureImage, {
+        x: 10,
+        y: 170,
+        width: 150,
+        height: 50
+      });
+    }
+
+    // Firma en página 4 (autorización de datos)
+    if (pages.length > 3) { // Página 4 es índice 3 (0-based)
+      pages[3].drawImage(signatureImage, {
+        x: 10,
+        y: 130,
+        width: 150,
+        height: 50
+      });
+    }
 
     const signedPdf = await pdfDoc.save();
 
-    // 4. Subir el nuevo PDF reemplazando el original
+    // 4. Subir el nuevo PDF
     const putCmd = new PutObjectCommand({
       Bucket: bucketName,
-      Key: key, // mismo key para sobreescribir
+      Key: key,
       Body: signedPdf,
       ContentType: 'application/pdf',
     });

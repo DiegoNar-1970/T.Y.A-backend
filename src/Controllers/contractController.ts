@@ -39,7 +39,7 @@ export class ContractController {
 
   static async getContractsByDates (req: Request, res: Response)  {
     const { start_date, end_date } = req.query;
-    console.log(req.query.start_date)
+
   
     if (!start_date || !end_date) {
       throw new AppError(
@@ -72,7 +72,45 @@ export class ContractController {
     res.status(201).json(contract);
   }
 
-  
+  static async getAnyContract(req: Request, res: Response){
+      try{
+        let contrato
+        let contractData
+        const {num_radicado,num_contract} = req.body    
+        
+        if (!num_radicado && !num_contract) {
+          throw new AppError(
+            'Informaciono insuficiente',
+            'BAD_REQUEST',
+            400
+          );
+        }
+
+        if(num_radicado){
+          contrato = num_radicado
+          const contracts = await ContractModel.getByRadicado(contrato)
+          contractData = contracts
+        }else{
+          contrato = num_contract
+          const contracts = await ContractModel.getByNumContract(contrato)
+          contractData = contracts
+        }
+        res.status(200).json(contractData)
+        return 
+      }catch (error: unknown) {
+      if (error instanceof AppError) {
+        res.status(error.statusCode).json({ message: error.message })
+        return  
+      } else if (error instanceof Error) {
+        // Si es un Error nativo
+        res.json({ message: error.message })
+        return 
+      } else {
+        // Si no es nada reconocible
+        throw new Error('Error desconocido en getByRadicado');
+      }
+    }
+  }
 }
 
 

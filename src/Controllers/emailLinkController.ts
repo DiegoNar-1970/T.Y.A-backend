@@ -6,7 +6,6 @@ export const EmailLinkController = {
   send: async (req:Request, res:Response) => {
     try {
       const email=[req.body]
-      console.log(email)
       const {response,body} = await EmailLinkModel.sendEmail(email);
 
       res.json({

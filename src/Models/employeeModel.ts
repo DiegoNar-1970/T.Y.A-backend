@@ -46,64 +46,118 @@ export class EmployeeModel {
   // Crear un nuevo empleado
   static async createEmployee (name: string, document: string, phone?: string): Promise<Employee> {
     try {
+      const thereIsEmployee= await connection.query('SELECT * FROM employee WHERE document = $1', [document]);
+
+      if(thereIsEmployee.rows.length > 0){
+        throw new AppError(
+          `Este empleado ya existe`,
+          'ID_FOUND',
+          404)
+      }
       const { rows } = await connection.query(
         'INSERT INTO employee (name, document, phone) VALUES ($1, $2, $3) RETURNING *',
         [name, document, phone]
       );
       return rows[0];
     } catch (error: unknown) {
-      if (error instanceof Error) {
+      if (error instanceof AppError) {
+        throw error;
+      } else if (error instanceof Error) {
         throw new AppError(
-          error.message,
-        'UNKNOWN_ERROR',
-        500)
+          ` ${error.message}`,
+          'UKNOWN_ERROR',
+          500
+        );
       } else {
-        console.error("Error desconocido al crear empleado.");
+        throw new AppError(
+          'Ocurrió un error desconocido al actualizar el empleado',
+          'UNKNOWN_ERROR',
+          500
+        );
       }
-      throw new Error('No se pudo crear el empleado');
     }
   }
 
-  // Actualizar un empleado
-  static async updateEmployee (id: string, name?: string, document?: string, phone?: string): Promise<Employee | null> {
+  static async updateEmployee(
+    id: string,
+    name?: string,
+    document?: string,
+    phone?: string
+  ): Promise<Employee> {
     try {
       const query = `
         UPDATE employee
-        SET name = COALESCE($1, name), document = COALESCE($2, document), phone = COALESCE($3, phone), updated_at = CURRENT_TIMESTAMP
-        WHERE id = $4 RETURNING *;
+        SET name = COALESCE($1, name),
+            document = COALESCE($2, document),
+            phone = COALESCE($3, phone),
+            updated_at = CURRENT_TIMESTAMP
+        WHERE id = $4
+        RETURNING *;
       `;
+  
       const { rows } = await connection.query(query, [name, document, phone, id]);
-      return rows[0] || null;
-    } catch (error: unknown) {
-      if (error instanceof Error) {
-        console.error(`Error al actualizar el empleado con id ${id}:`, error.message);
+  
+      if (rows.length === 0) {
         throw new AppError(
-          error.message,
-        'UNKNOWN_ERROR',
-        500)
-      } else {
-        console.error(`Error desconocido al actualizar el empleado con id ${id}`);
+          `No se encontró ningún empleado para actualizar`,
+          'ID_NOT_FOUND',
+          404
+        );
       }
-      throw new Error(`No se pudo actualizar el empleado con id ${id}`);
+  
+      return rows[0];
+    } catch (error: unknown) {
+      if (error instanceof AppError) {
+        throw error;
+      } else if (error instanceof Error) {
+        throw new AppError(
+          `Error al actualizar el empleado: ${error.message}`,
+          'UPDATE_EMPLOYEE_ERROR',
+          500
+        );
+      } else {
+        throw new AppError(
+          'Ocurrió un error desconocido al actualizar el empleado',
+          'UNKNOWN_ERROR',
+          500
+        );
+      }
     }
   }
 
   // Eliminar un empleado
-  static async deleteEmployee (id: string): Promise<boolean> {
+  static async deleteEmployee(id: string): Promise<boolean> {
     try {
-      const { rowCount } = await connection.query('DELETE FROM employee WHERE id = $1 RETURNING *', [id]);
-      return rowCount !== null && rowCount > 0;
+      const { rowCount } = await connection.query(
+        'DELETE FROM employee WHERE id = $1 RETURNING *',
+        [id]
+      );
+  
+      if (!rowCount || rowCount === 0) {
+        throw new AppError(
+          `No se encontró ningún empleado`,
+          'ID_NOT_FOUND',
+          404
+        );
+      }
+  
+      return true;
     } catch (error: unknown) {
-      if (error instanceof Error) {
-        console.error(`Error al eliminar el empleado con id ${id}:`, error.message);
+      if (error instanceof AppError) {
+        throw error; // Ya es un AppError, solo lo relanzamos
+      } else if (error instanceof Error) {
         throw new AppError(
           error.message,
-        'UNKNOWN_ERROR',
-        500)
+          'DELETE_EMPLOYEE_ERROR',
+          500
+        );
       } else {
-        console.error(`Error desconocido al eliminar el empleado con id ${id}`);
+        throw new AppError(
+          'Ocurrió un error desconocido al eliminar el empleado',
+          'UNKNOWN_ERROR',
+          500
+        );
       }
-      throw new Error(`No se pudo eliminar el empleado con id ${id}`);
     }
   }
 

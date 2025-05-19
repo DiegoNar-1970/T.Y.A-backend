@@ -32,7 +32,6 @@ export class CustomerController {
             const customer = req.body;
             
             const id = await CustomerService.create(customer);
-            console.log('hola',id,'asi llega')
              res.status(201).json({ message: 'Customer created', data : id });
     }
     
