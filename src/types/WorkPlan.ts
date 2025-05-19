@@ -1,6 +1,6 @@
-import { UUID } from "./Customer";
-import { Employee } from "./Employee";
-import { Process } from "./Process";
+import { UUID } from "./customer";
+import { Employee } from "./employee";
+import { Process } from "./process";
 
 export interface WorkPlan {
     id?: UUID;

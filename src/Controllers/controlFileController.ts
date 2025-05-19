@@ -7,8 +7,8 @@ import { EmailLinkModel } from "../models/emailLlinkModel";
 import { EmployeeModel } from "../models/employeeModel";
 import { InfoContractModel } from "../models/infoContractModel";
 import { PdfSignerService } from "../services/PdfSignerService";
-import { InfoContract } from "../types/InfoContract";
-import { AppError } from "../utils/AppError";
+import { InfoContract } from "../types/infoContract";
+import { AppError } from "../utils/appError";
 
 
     export class ControlFileController{

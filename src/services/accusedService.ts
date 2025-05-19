@@ -1,5 +1,5 @@
 import { AccusedModel } from "../models/accusedModel";
-import { Accused } from "../types/Acussed";
+import { Accused } from "../types/acussed";
 
 
 

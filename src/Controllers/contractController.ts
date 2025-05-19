@@ -2,8 +2,8 @@ import { Request, Response } from 'express';
 import { ContractModel } from '../models/contractModel';
 import { ContractService } from '../services/contractService';
 import { CustomerService } from '../services/customerService';
-import { Contract } from '../types/Contract';
-import { AppError } from '../utils/AppError';
+import { Contract } from '../types/contract';
+import { AppError } from '../utils/appError';
 
 export class ContractController {
   static async getAll(req: Request, res: Response): Promise<void> {

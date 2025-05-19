@@ -1,6 +1,6 @@
-import { UUID } from "./Customer";
-import { PaimentTo } from "./PaimentTo";
-import { TypeBank } from "./TypeBank";
+import { UUID } from "./customer";
+import { PaimentTo } from "./paimentTo";
+import { TypeBank } from "./typeBank";
 
 export interface Paiment {
     id?: UUID;

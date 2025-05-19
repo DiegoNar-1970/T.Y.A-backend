@@ -1,5 +1,5 @@
-import { Contract } from "./Contract";
-import { UUID } from "./Customer";
+import { Contract } from "./contract";
+import { UUID } from "./customer";
 
 export interface Process {
     id?: UUID;

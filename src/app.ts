@@ -10,7 +10,7 @@ import { customerRouter } from './routes/customerRouter';
 import { EmailLinkRoute } from './routes/emailLinkRoute';
 import { employeeRouter } from './routes/employeeRouter';
 import { InfoContractRouter } from './routes/infoContractRouter';
-import { UserRouter } from './routes/UserRouter';
+import { UserRouter } from './routes/userRouter';
 
 const corsOptions = {
     origin: 'http://localhost:5173', 

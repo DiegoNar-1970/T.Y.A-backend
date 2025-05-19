@@ -10,10 +10,12 @@
     "skipLibCheck": true,
     "baseUrl": "./",
     "paths": {
-      "@models/*": ["src/models/*"]
+      "@controllers/*": ["src/controllers/*"],
+      "@models/*": ["src/models/*"],
+      "@routes/*": ["src/routes/*"],
+      "@middleware/*": ["src/middleware/*"]
     },
-    "types": ["node"],
-    "resolveJsonModule": true
+    "types": ["node"]
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]

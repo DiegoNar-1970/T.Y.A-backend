@@ -1,6 +1,6 @@
-import { UUID } from "./Customer";
-import { InfoBill } from "./InfoBill";
-import { Process } from "./Process";
+import { UUID } from "./customer";
+import { InfoBill } from "./infoBill";
+import { Process } from "./process";
 
 export interface Bill {
     id?: UUID;

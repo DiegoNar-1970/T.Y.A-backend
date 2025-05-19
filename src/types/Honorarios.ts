@@ -1,4 +1,4 @@
-import { UUID } from "./Customer";
+import { UUID } from "./customer";
 
 export interface Honorarios {
     id?: UUID;

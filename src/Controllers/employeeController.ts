@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { EmployeeService } from '../services/employeeService';
-import { AppError } from '../utils/AppError';
+import { AppError } from '../utils/appError';
 
 
 export class EmployeeController {
