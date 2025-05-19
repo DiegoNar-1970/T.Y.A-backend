@@ -281,9 +281,11 @@ import { AppError } from "../utils/AppError";
             } catch (error) {
                 if (error instanceof AppError) {
                     console.error('AppError:', error.message);
-                    return res.status(error.statusCode).json({ message: error.message, code: error.code });
+                    res.status(error.statusCode).json({ message: error.message, code: error.code })
+                    return 
                   }
-                  return res.status(500).json({ message: 'Error interno al firmar contrato' });
+                  res.status(500).json({ message: 'Error interno al firmar contrato' });
+                  return 
             }
         }
     }

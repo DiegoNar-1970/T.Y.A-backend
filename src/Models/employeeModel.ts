@@ -1,6 +1,6 @@
-import { connection } from '../config/configDb.js';
+import { connection } from '../config/configDb';
 import { Employee } from '../types/Employee';
-import { AppError } from '../utils/AppError.js';
+import { AppError } from '../utils/AppError';
 
 export class EmployeeModel {
   // Obtener todos los empleados

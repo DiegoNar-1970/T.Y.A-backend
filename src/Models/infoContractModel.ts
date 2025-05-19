@@ -1,6 +1,6 @@
-import { connection } from '../config/configDb.js';
+import { connection } from '../config/configDb';
 import { InfoContract } from '../types/InfoContract';
-import { AppError } from '../utils/AppError.js';
+import { AppError } from '../utils/AppError';
 
 export class InfoContractModel {
   static async getAllInfoContracts(): Promise<InfoContract[]> {

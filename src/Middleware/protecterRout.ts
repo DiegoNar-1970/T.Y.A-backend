@@ -7,6 +7,9 @@ export const authRequired = (
     res:Response,
     next:NextFunction) => {
         const SECRET_KEY = process.env.SECRET_KEY_JWT
+        if (!SECRET_KEY) {
+            throw new Error('La variable de entorno SECRET_KEY_JWT no está definida');
+          }
         const {token} = req.cookies
         if(!token) {
             res.status(400).json({message:'no estas autorizado para entrar a este sitio'})

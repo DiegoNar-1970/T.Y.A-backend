@@ -1,13 +1,18 @@
 {
   "compilerOptions": {
     "target": "ES2020",
-    "module": "ESNext",
+    "module": "CommonJS",  // Cambiado de ESNext a CommonJS para Node.js
     "moduleResolution": "node",
     "outDir": "./dist",
     "rootDir": "./src",
     "esModuleInterop": true,
     "strict": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "baseUrl": "./src",  // Añadido para resolver rutas
+    "paths": {  // Opcional: alias para rutas
+      "@models/*": ["models/*"]
+    },
+    "types": ["node"]  // Añadido para tipos de Node.js
   },
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules"]

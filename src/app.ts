@@ -2,14 +2,15 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import express from 'express';
-import { accusedRouter } from './Routes/AcussedRouter.js';
-import { contractRouter } from './Routes/contractRouter.js';
-import { controlFileRouter } from './Routes/controlFileRouter.js';
-import { customerRouter } from './Routes/customerRouter.js';
-import { EmailLinkRoute } from './Routes/emailLinkRoute.js';
-import { employeeRouter } from './Routes/employeeRouter.js';
-import { InfoContractRouter } from './Routes/infoContractRouter.js';
-import { UserRouter } from './Routes/UserRouter.js';
+
+import { accusedRouter } from './Routes/AcussedRouter';
+import { contractRouter } from './Routes/contractRouter';
+import { controlFileRouter } from './Routes/controlFileRouter';
+import { customerRouter } from './Routes/customerRouter';
+import { EmailLinkRoute } from './Routes/emailLinkRoute';
+import { employeeRouter } from './Routes/employeeRouter';
+import { InfoContractRouter } from './Routes/infoContractRouter';
+import { UserRouter } from './Routes/UserRouter';
 
 const corsOptions = {
     origin: 'http://localhost:5173', 

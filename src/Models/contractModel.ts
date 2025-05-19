@@ -1,6 +1,6 @@
-  import { connection } from '../config/configDb.js';
-import { Contract } from '../types/Contract.js';
-import { AppError } from '../utils/AppError.js';
+  import { connection } from '../config/configDb';
+import { Contract } from '../types/Contract';
+import { AppError } from '../utils/AppError';
 
   export class ContractModel {
     static async getAll(): Promise<Contract[]> {

@@ -2,7 +2,7 @@ import { Router } from "express";
 
 import { ControlFileController } from "../Controllers/controlFileController";
 
-import { upload } from '../Middleware/uploadMemory.js';
+import { upload } from '../Middleware/uploadMemory';
 
 export const controlFileRouter = Router();
 

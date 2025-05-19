@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt';
-import { connection } from '../config/configDb.js';
+import { connection } from '../config/configDb';
 import { User } from '../types/User';
 import { AppError } from "../utils/AppError";
 

@@ -1,8 +1,8 @@
 ;
 
-import { ContractModel } from '../models/contractModel.js';
-import { Contract } from '../types/Contract.js';
-import { AppError } from '../utils/AppError.js';
+import { ContractModel } from '../models/contractModel';
+import { Contract } from '../types/Contract';
+import { AppError } from '../utils/AppError';
 
 export class ContractService {
   static async getAll(): Promise<Contract[]> {

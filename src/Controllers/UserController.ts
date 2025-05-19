@@ -66,14 +66,19 @@ export class UserController {
 
     static async verifyToken(req: Request, res: Response){
         try{
-            const SECRET_KEY= process.env.SECRET_KEY_JWT
+            const SECRET_KEY_JWT= process.env.SECRET_KEY_JWT
+
+            if (!SECRET_KEY_JWT) {
+                throw new Error('La variable de entorno SECRET_KEY_JWT no está definida');
+              }
+
             const {token} = req.cookies
             if(!token){
                  res.status(400).json({message:'Unautorized'})
                  return
                 
             }
-            jwt.verify(token,SECRET_KEY,
+            jwt.verify(token,SECRET_KEY_JWT,
                 async (err:any,user:any)=>{
                     if(err){
                          res.status(400).json({message:'Unautorized'})

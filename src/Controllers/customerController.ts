@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { CustomerService } from '../services/customerService.js';
+import { CustomerService } from '../services/customerService';
 
 
 export class CustomerController {
