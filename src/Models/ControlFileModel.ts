@@ -1,6 +1,6 @@
 import { PutObjectCommand } from "@aws-sdk/client-s3";
-import { connection } from '../config/configDb';
-import { createUrl, paramsS3, s3Client } from '../config/s3Config';
+import { connection } from '@config/configDb';
+import { createUrl, paramsS3, s3Client } from '@config/s3Config';
 
 export class ControlFileModel { 
 

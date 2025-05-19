@@ -1,6 +1,6 @@
-import { CustomerModel } from '../models/customerModel';
-import { Customer } from '../types/customer';
-import { AppError } from '../utils/appError';
+import { Customer } from '@interfaces/customer';
+import { CustomerModel } from '@models/customerModel';
+import { AppError } from '@utils/appError';
 
 export class CustomerService {
     

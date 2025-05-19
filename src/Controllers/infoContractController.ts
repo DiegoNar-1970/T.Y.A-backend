@@ -1,5 +1,5 @@
+import { InfoContractService } from '@services/infoContractService';
 import { Request, Response } from 'express';
-import { InfoContractService } from '../services/infoContractService';
 
 export class InfoContractController {
   static async getAllInfoContracts(req: Request, res: Response): Promise<void> {

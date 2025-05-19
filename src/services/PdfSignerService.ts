@@ -1,7 +1,7 @@
 import { GetObjectCommand, PutObjectCommand } from '@aws-sdk/client-s3';
+import { bucketName, s3Client } from '@config/s3Config';
 import { PDFDocument } from 'pdf-lib';
 import { Readable } from 'stream';
-import { bucketName, s3Client } from '../config/s3Config';
 
 function streamToBuffer(stream: Readable): Promise<Buffer> {
   return new Promise((resolve, reject) => {

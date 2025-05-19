@@ -1,6 +1,6 @@
-import { connection } from '../config/configDb';
-import { Accused, AccusedDTO } from '../types/acussed';
-import { AppError } from '../utils/appError';
+import { connection } from '@config/configDb';
+import { Accused, AccusedDTO } from '@interfaces/acussed';
+import { AppError } from '@utils/appError';
 export class AccusedModel {
     
     static async getAll(): Promise<Accused[]> {

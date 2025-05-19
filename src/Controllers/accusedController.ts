@@ -1,5 +1,5 @@
+import { AccusedService } from "@services/accusedService";
 import { Request, Response } from "express";
-import { AccusedService } from "../services/accusedService";
 
 
 export class AccusedController {

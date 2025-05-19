@@ -1,7 +1,7 @@
+import { connection } from '@config/configDb';
+import { User } from '@interfaces/user';
+import { AppError } from "@utils/appError";
 import bcrypt from 'bcrypt';
-import { connection } from '../config/configDb';
-import { User } from '../types/user';
-import { AppError } from "../utils/appError";
 
  export class UserModel{
     

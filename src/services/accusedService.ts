@@ -1,5 +1,5 @@
-import { AccusedModel } from "../models/accusedModel";
-import { Accused } from "../types/acussed";
+import { Accused } from "@interfaces/acussed";
+import { AccusedModel } from "@models/accusedModel";
 
 
 

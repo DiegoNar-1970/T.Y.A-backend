@@ -1,6 +1,6 @@
-import { connection } from '../config/configDb';
-import { Employee } from '../types/employee';
-import { AppError } from '../utils/appError';
+import { connection } from '@config/configDb';
+import { Employee } from '@interfaces/employee';
+import { AppError } from '@utils/appError';
 
 export class EmployeeModel {
   // Obtener todos los empleados

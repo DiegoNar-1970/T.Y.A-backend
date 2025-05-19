@@ -1,6 +1,6 @@
-import { InfoContractModel } from '../models/infoContractModel';
-import { InfoContract } from '../types/infoContract';
-import { AppError } from '../utils/appError';
+import { InfoContract } from '@interfaces/infoContract';
+import { InfoContractModel } from '@models/infoContractModel';
+import { AppError } from '@utils/appError';
 
 export class InfoContractService {
   static async getAllInfoContracts(): Promise<InfoContract[]> {

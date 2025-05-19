@@ -1,8 +1,8 @@
+import { createAccesToken } from '@config/jwt';
+import { UserModel } from '@models/userModel';
+import { AppError } from '@utils/appError';
 import { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
-import { createAccesToken } from '../config/jwt';
-import { UserModel } from '../models/userModel';
-import { AppError } from '../utils/appError';
 export class UserController {
 
     static async create(req:Request,res:Response){

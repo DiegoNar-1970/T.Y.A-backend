@@ -1,4 +1,4 @@
-import { EmployeeModel } from '../models/employeeModel';
+import { EmployeeModel } from '@models/employeeModel';
 
 export class EmployeeService {
 

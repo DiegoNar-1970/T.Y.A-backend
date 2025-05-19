@@ -1,7 +1,7 @@
-  import { Accused } from "./acussed";
-import { ContractType } from "./contractType";
-import { Customer, UUID } from "./customer";
-import { TypePaiment } from "./typePaiment";
+  import { Accused } from "@interfaces/acussed";
+import { ContractType } from "@interfaces/contractType";
+import { Customer, UUID } from "@interfaces/customer";
+import { TypePaiment } from "@interfaces/typePaiment";
 
   export interface InfoContract {
       id?: UUID;

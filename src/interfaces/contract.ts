@@ -1,6 +1,6 @@
-import { UUID } from "./customer";
-import { Employee } from "./employee";
-import { InfoContract } from "./infoContract";
+import { UUID } from "@interfaces/customer";
+import { Employee } from "@interfaces/employee";
+import { InfoContract } from "@interfaces/infoContract";
 
 export interface Contract {
     id?: UUID;

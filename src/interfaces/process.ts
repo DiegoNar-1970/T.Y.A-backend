@@ -1,5 +1,5 @@
+import { UUID } from "@interfaces/customer";
 import { Contract } from "./contract";
-import { UUID } from "./customer";
 
 export interface Process {
     id?: UUID;

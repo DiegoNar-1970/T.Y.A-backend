@@ -1,4 +1,5 @@
     import { Request, Response } from "express";
+import { InfoContract } from "../interfaces/infoContract";
 import { AccusedModel } from "../models/accusedModel";
 import { ContractModel } from "../models/contractModel";
 import { ControlFileModel } from "../models/controlFileModel";
@@ -7,7 +8,6 @@ import { EmailLinkModel } from "../models/emailLlinkModel";
 import { EmployeeModel } from "../models/employeeModel";
 import { InfoContractModel } from "../models/infoContractModel";
 import { PdfSignerService } from "../services/PdfSignerService";
-import { InfoContract } from "../types/infoContract";
 import { AppError } from "../utils/appError";
 
 
