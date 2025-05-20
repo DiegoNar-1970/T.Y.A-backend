@@ -91,7 +91,7 @@ import { AppError } from "../utils/appError.js";
 
                 const email=[{
                         link:url,
-                        name:dataParsed.client_name? dataParsed.client_name : dataParsed.demandados[0].name,
+                        name:dataParsed.client_name? dataParsed.client_name : dataParsed.demandantes[0].name,
                         email:dataParsed.email 
                     }]
 
