@@ -7,6 +7,7 @@ export class UserController {
     static async create(req,res){
     try{
         const user=req.body 
+        
         const createdUser = await UserModel.create(user)
          res.status(200).json(
             {message:'Usuario creado',email:createdUser.email})
