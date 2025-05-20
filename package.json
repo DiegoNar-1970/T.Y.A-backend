@@ -4,10 +4,10 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "tsx watch src/app.ts",
-    "build": "tsup --config tsup.config.ts",
-    "start": "node dist/app.js",
-    "clean": "rm -rf dist node_modules package-lock.json"
+    "dev": "nodemon src/app.js",
+    "build": "echo 'No se necesita build en JS puro'",
+    "start": "node src/app.js",
+    "clean": "rm -rf node_modules package-lock.json"
   },
   "keywords": [],
   "author": "",
@@ -33,21 +33,5 @@
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.37.7",
     "zod": "^3.24.3"
-  },
-  "devDependencies": {
-    "@types/bcrypt": "^5.0.2",
-    "@types/cookie-parser": "^1.4.8",
-    "@types/cors": "^2.8.18",
-    "@types/express": "^5.0.1",
-    "@types/jsonwebtoken": "^9.0.9",
-    "@types/multer": "^1.4.12",
-    "@types/node": "^22.15.17",
-    "@types/pg": "^8.15.1",
-    "standart": "^6.1.0",
-    "ts-node-dev": "^2.0.0",
-    "tsconfig-paths": "^4.2.0",
-    "tsup": "^8.5.0",
-    "tsx": "^4.19.4",
-    "typescript": "^5.8.3"
   }
 }
