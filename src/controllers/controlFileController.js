@@ -87,7 +87,7 @@ import { AppError } from "../utils/appError.js";
                 
                 const contractCreated = await ContractModel.create(createContract)  
 
-                const linkToSigned=`http://localhost:5173/contratos/signed/${contractCreated.id || 'error'}`
+                const linkToSigned=`https://asesoriasgrupotrujilloyasociados.com/contratos/signed/${contractCreated.id || 'error'}`
 
                 const email=[{
                         link:url,
@@ -207,7 +207,7 @@ import { AppError } from "../utils/appError.js";
 
                 const contractCreated = await ContractModel.create(createContract)
 
-                const linkToSigned=`http://localhost:5173/contratos/signed/${contractCreated.id || 'error'}`
+                const linkToSigned=`https://asesoriasgrupotrujilloyasociados.com/contratos/signed/${contractCreated.id || 'error'}`
                 
                 res.json({
                     success: true,
