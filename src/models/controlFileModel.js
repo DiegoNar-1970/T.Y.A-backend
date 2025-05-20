@@ -1,6 +1,7 @@
 import { PutObjectCommand } from "@aws-sdk/client-s3";
 import { connection } from '../config/configDb.js';
 import { createUrl, paramsS3, s3Client } from '../config/s3Config.js';
+import { AppError } from "../utils/appError.js";
 
 export class ControlFileModel { 
 
@@ -18,9 +19,11 @@ export class ControlFileModel {
             
             return {response:response,url:url};
         }catch(error){
-
-            console.error('Error uploading PDF:', error);
-            throw new Error('Failed to upload PDF');
+            console.log(error)
+            throw new AppError(
+                error.message,
+                'ERROR_UNDEFINED',
+                400)
         }
     }
 

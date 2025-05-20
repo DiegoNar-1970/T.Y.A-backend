@@ -10,7 +10,7 @@ import { customerRouter } from './routes/customerRouter.js';
 import { employeeRouter } from './routes/employeeRouter.js';
 import { InfoContractRouter } from './routes/infoContractRouter.js';
 import { UserRouter } from './routes/userRouter.js';
-const origins =['https://tya-backend-production.up.railway.app/','http://localhost:5173']
+const origins =['https://tya-backend-production.up.railway.app/','http://localhost:5173','https://asesoriasgrupotrujilloyasociados.com']
 
 const corsOptions = {
     origin: 'https://asesoriasgrupotrujilloyasociados.com', 
