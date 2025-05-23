@@ -32,7 +32,7 @@ export class PdfSignerService {
     // Firma en página 3 (contrato)
     if (pages.length > 2) { // Página 3 es índice 2 (0-based)
       pages[2].drawImage(signatureImage, {
-        x: 10,
+        x: 60,
         y: 170,
         width: 150,
         height: 50
@@ -42,8 +42,8 @@ export class PdfSignerService {
     // Firma en página 4 (autorización de datos)
     if (pages.length > 3) { // Página 4 es índice 3 (0-based)
       pages[3].drawImage(signatureImage, {
-        x: 10,
-        y: 130,
+        x: 60,
+        y: 220,
         width: 150,
         height: 50
       });
