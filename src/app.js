@@ -18,9 +18,10 @@ const origins =[
 ] 
 
 const corsOptions = {
-    origin: 'https://asesoriasgrupotrujilloyasociados.com', 
+    origin: 'http://localhost:5173', 
     credentials: true,  
   };
+  
 dotenv.config();
 
 const app = express()   
@@ -44,7 +45,7 @@ app.use('/contract', contractRouter)
 app.use('/control-files', controlFileRouter);
 app.use('/user',UserRouter);
 
-
+  
 
 const PORT = process.env.PORT ?? 1234
 
