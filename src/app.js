@@ -11,29 +11,40 @@ import { employeeRouter } from './routes/employeeRouter.js';
 import { InfoContractRouter } from './routes/infoContractRouter.js';
 import { UserRouter } from './routes/userRouter.js';
 
-const origins =[
-  'https://tya-backend-production.up.railway.app/', //railway production
-  'http://localhost:5173', //local
-  'https://asesoriasgrupotrujilloyasociados.com' // front production
-] 
 
-const corsOptions = {
-    origin: 'http://localhost:5173', 
-    credentials: true,  
-  };
-  
+const allowedOrigins = [
+  "https://asesoriasgrupotrujilloyasociados.com",
+  "http://localhost:5173",
+  "https://api.asesoriasgrupotrujilloyasociados.com",
+  "https://tya-backend-production.up.railway.app",
+];
+
 dotenv.config();
 
 const app = express()   
+
+//cors es para que pueda recibir peticiones de diferentes dominios
+app.use(cors({
+  origin: function (origin, callback) {
+    // permitir requests sin origin (ej: Postman, curl)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    } else {
+      return callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true
+}));
+// authRequired,
+
 app.disable('x-powered-by')
 //express json es para que expres reconozca el body
 app.use(express.json())
 //cookie parser es para que pueda generarle o enviarles cookies al navegador
 app.use(cookieParser()) 
 
-//cors es para que pueda recibir peticiones de diferentes dominios
-app.use(cors(corsOptions));
-// authRequired,
+
 
 app.use('/customer', customerRouter)
 app.use('/accused', accusedRouter)
